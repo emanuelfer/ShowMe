@@ -1,0 +1,81 @@
+
+<div class="login pt-3 pb-3 container mt-5 d-flex justify-content-around">
+    
+    <div class="col-md-6">
+        
+        <? if(isset($_GET['publicar']) && $_GET['publicar'] == 'success'): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Eba!</strong> Publicação salva com sucesso!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <? elseif(isset($_GET['publicar']) && $_GET['publicar'] == 'erro'): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Ops!</strong> Erro ao salvar publicação!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <? endif ?>
+        
+        <form method="post" enctype="multipart/form-data" action="/publicar">
+          <h1 class="text-center">Nova Publicação</h1>
+          <div class="form-group">
+            <label for="titulo">Título</label>
+            <input name="titulo" type="text" class="form-control" id="titulo" placeholder="Digite o título da obra">
+          </div>
+            
+          <div class="form-group">
+            <label for="autor">Autor</label>
+            <input name="autor" type="text" class="form-control" id="titulo" placeholder="Digite o nome do autor">
+          </div>
+            
+          <div class="form-group">
+            <label for="descricao_curta">Descrição Curta</label>
+            <input name="descricao_curta" type="text" class="form-control" id="descricao_curta" placeholder="Digite a descrição curta">
+          </div>
+            
+          <div class="form-group">
+            <label for="resenha">Resenha</label>
+            <textarea  name="resenha" class="form-control" id="resenha" rows="3" placeholder="Digite a resenha da obra"></textarea>
+          </div>
+            
+          <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="categoria" id="categoria1" value="Filme" checked>
+              <label class="form-check-label" for="categoria1">
+                Filme
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="categoria" id="categoria2" value="Album" checked>
+              <label class="form-check-label" for="categoria1">
+                Album
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="categoria" id="categoria3" value="Música">
+              <label class="form-check-label" for="categoria2">
+                Música
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="categoria" id="categoria4" value="Livro">
+              <label class="form-check-label" for="categoria3">
+                Livro
+              </label>
+            </div>
+          </div>
+            
+          <div class="form-group">
+            <label for="image">Imagem</label>
+            <input type="file" name="image" class="form-control-file" id="image">
+          </div>
+          
+          <button type="submit" class="btn-login btn btn-block mb-2">Publicar</button>
+        </form>
+    </div>
+</div>
+

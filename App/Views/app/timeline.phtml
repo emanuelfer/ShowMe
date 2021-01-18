@@ -1,0 +1,30 @@
+<? foreach($this->view->posts as $key => $post): ?>
+<div class="container d-flex flex-column justify-content-around mt-5">
+    <div class="card" style="width: 100%;">
+        <div class="card-header d-flex flow-row justify-content-between">
+            <div >
+                <img src="<?= $post['user_image'] ?>">
+                <?= $post['user_nome'] ?>
+            </div>
+            <div >
+                <? if($post['id_usuario'] == $_SESSION['id']):?>
+                <a class="mr-2" href="/editar_post?id=<?= $post['id'] ?>">
+                    <i class="fa fa-edit " style="color: #eeb511 "></i>
+                </a>
+                <a href="/remove_post?id=<?= $post['id'] ?>">
+                    <i class="fa fa-trash" style="color: #eeb511 " aria-hidden="true"></i>
+                </a>
+                <? endif ?>
+            </div>
+        </div>
+            <img class="card-img-top mr-auto ml-auto" src="<?= $post['imagem']?>" alt="Card image cap" style="max-height=960px;">
+        <div class="card-body">
+            <h5 class="card-title"><?= $post['titulo'] ?></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><?= $post['categoria']?> by <?= $post['autor']?></h6>
+            <p class="card-text"><?= $post['descricao_curta'] ?></p>
+            <a href="/post?id=<?=$post['id']?>" class="btn btn-primary btn-timeline">Ler Mais...</a>
+        </div>
+    </div>    
+</div>
+<? endforeach ?>
+

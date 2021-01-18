@@ -1,0 +1,20 @@
+<? foreach($this->view->usuarios as $key => $usuario): ?>
+
+<div class="pessoas container mt-3 p-2">
+    <div class="row justify-content-around">
+        <div class="col-sm-6">
+            <img src="<?= $usuario['imagem'] ?>">
+            <?= $usuario['nome'] ?>
+        </div>
+        <div class="col-sm-6 mt-auto mb-auto d-flex justify-content-end">
+            
+            <? if($usuario['seguindo'] > 0):?>
+            <a href="/deixar_seguir?id_seguidor=<?=$usuario['id']?>&termo=<?= $_GET['termo'] ?>" class="btn btn-danger">Deixar de seguir</a>
+            
+            <? elseif($usuario['id'] != $_SESSION['id']): ?>
+            <a href="/seguir?id_seguidor=<?=$usuario['id']?>&termo=<?= $_GET['termo'] ?>" class="btn btn-success">Seguir</a>
+            <? endif ?>
+        </div>
+    </div>
+</div>
+<? endforeach ?>

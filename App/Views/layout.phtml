@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <title>Show Me - Clube Cultural</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        
+    </head>
+    
+    <body>
+        
+        <div class="container col-12">
+            
+            <nav class="navbar navbar-expand-md navbar-light nav-topo d-flex flex-column"> 
+              <div class="container d-flex flex-row">
+                
+                <? if(isset($_SESSION['id'])): ?>
+                <a href="/adicionar_publicacao" class="nova-publicacao">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                    Adicionar Publicação
+                </a>
+                <? endif ?>
+                    
+                    
+                <nav class="navbar navbar-expand-sm">
+                    <ul class="navbar-nav">
+                        
+                        <? if(!isset($_SESSION['id'])): ?>
+                        <li class="nav-item">
+                            <a href="/sign_in" class="nav-link"> Sign in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/" class="nav-link"> Login</a>
+                        </li>
+                        <? else: ?>
+                        <li class="nav-item">
+                            <a href="/sair" class="nav-link"> Logout</a>
+                        </li>
+                        <? endif ?>
+                    </ul>
+                </nav>
+              </div>
+              <a class="navbar-brand" href="/timeline">
+                <img src="/images/logo2.png" width="100%">  
+              </a>
+                
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="menu-topo collapse navbar-collapse pb-2" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mr-2">
+                 <li class="nav-item active">
+                    <a class="nav-link" href="/timeline">Timeline</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/perfil">Perfil </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Amigos</a>
+                  </li>
+                  <div class="dropdown d-flex align-items-center">
+                      <button class="btn btn-secondary dropdown-toggle btn-categoria" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categorias
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/timeline?categoria=Filme">Filmes</a>
+                        <a class="dropdown-item" href="/timeline?categoria=Album">Albuns</a>
+                        <a class="dropdown-item" href="/timeline?categoria=Música">Músicas</a>
+                        <a class="dropdown-item" href="/timeline?categoria=Livro">Livros</a>
+                      </div>
+                    </div>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" method="get" action="/buscar">
+                  <? if(isset($_GET['termo'])): ?>
+                  <input class="form-control mr-sm-2" type="search" name="termo" value="<?= $_GET['termo'] ?>" aria-label="Search">
+                  <? else: ?>
+                  <input class="form-control mr-sm-2" type="search" name="termo" placeholder="Buscar..." aria-label="Search">
+                  <? endif ?>
+                    
+                  <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+              </div>
+            </nav>
+        </div>
+        
+        <?= $this->content() ?>
+        
+        <footer>
+            <div class="container mt-5 pt-2 pb-2">
+                <div class="row">
+                    <div class="col text-center">
+                        <h4>&copy; Criado por Emanuel Lindoso Ferreira</h4>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

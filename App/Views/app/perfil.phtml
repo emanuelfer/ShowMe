@@ -1,0 +1,22 @@
+<div class="perfil container mt-5 p-3">
+    <div class="row text-center justify-content-around mb-2">
+        <div class="col-12 mb-2"><img src="<?= $this->view->usuario['imagem'] ?>" width="100" height="100" style="border-radius:50%;"></div>
+        <div class="col-12 mb-2"><?= $this->view->usuario['nome'] ?></div>
+    </div>
+    <div class="row d-felx justify-content-around align-items-center">
+        <div class="col-4 text-center">
+            <h5>Seguidores</h5>
+            <?=$this->view->seguidores['seguidores']?>
+        </div>
+        <div class="col-4 text-center">
+            <h5>Seguindo</h5>
+            <?=$this->view->seguindo['seguindo']?>
+        </div>
+        <div class="col-4 text-center">
+            <h5>Posts</h5>
+            <?=$this->view->qtdPosts['qtdPosts']?>
+        </div>
+    </div>
+</div>
+
+<? include('timeline.phtml') ?>

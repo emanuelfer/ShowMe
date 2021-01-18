@@ -1,0 +1,18 @@
+<? foreach($this->view->post as $key => $post): ?>
+<div class="container d-flex flex-column justify-content-around mt-5">
+    <div class="card" style="width: 100%;">
+        <div class="card-header">
+            <img src="<?= $post['user_imagem'] ?>">
+            <?= $post['user_nome'] ?>
+        </div>
+            <img class="card-img-top mr-auto ml-auto" src="<?= $post['imagem']?>" alt="Card image cap" style="max-height=960px;">
+        <div class="card-body">
+            <h5 class="card-title"><?= $post['titulo'] ?></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><?= $post['categoria']?> by <?= $post['autor']?></h6>
+            <p class="card-text"><?= $post['resenha'] ?></p>
+
+        </div>
+    </div>    
+</div>
+<? endforeach ?>
+

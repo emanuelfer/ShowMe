@@ -1,0 +1,42 @@
+
+<div class="login pt-3 pb-3 container mt-5 d-flex justify-content-around">
+    
+    <div class="col-md-6">
+        
+        <form method="post" enctype="multipart/form-data" action="/add_user">
+          <h1 class="text-center">Criar Conta</h1>
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input name="nome" type="text" class="form-control" id="titulo" placeholder="Digite o seu nome">
+          </div>
+            
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input name="email" type="text" class="form-control" id="titulo" placeholder="Digite o seu email">
+          </div>
+            
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input name="password" type="password" class="form-control" id="descricao_curta" placeholder="Digite a sua senha">
+          </div>
+            
+          <div class="form-group">
+            <label for="password2">Confirme sua senha</label>
+            <input name="password2" type="password" class="form-control" id="descricao_curta" placeholder="Digite a sua senha">
+          </div>
+            
+          <div class="form-group">
+            <label for="image">Imagem</label>
+            <input type="file" name="image" class="form-control-file" id="image">
+          </div>
+          
+          
+          <button type="submit" class="btn-login btn btn-block mb-2">Cadastrar</button>
+            
+          <? if(isset($_GET['cadastro']) && $_GET['cadastro'] == 'erro'): ?>
+            <span class="text-danger" style="font-size: 1.2em;">Verifique se seus dados foram preenchidos corretamente.</span>
+            <? endif ?>
+        </form>
+    </div>
+</div>
+
